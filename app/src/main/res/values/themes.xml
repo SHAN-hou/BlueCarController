@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.BlueCarController" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.BlueCarController" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#0F3460</item>
         <item name="colorPrimaryDark">#16213E</item>
         <item name="colorAccent">#E94560</item>

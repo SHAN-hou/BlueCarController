@@ -59,14 +59,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        try {
+            setContentView(R.layout.activity_main);
 
-        mainHandler = new Handler(Looper.getMainLooper());
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            mainHandler = new Handler(Looper.getMainLooper());
+            bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
-        initViews();
-        setupListeners();
-        checkPermissions();
+            initViews();
+            setupListeners();
+            checkPermissions();
+        } catch (Exception e) {
+            Toast.makeText(this, "启动失败: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void initViews() {
@@ -169,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
             deviceNames[i] = d.getName() + "\n" + d.getAddress();
         }
 
-        new AlertDialog.Builder(this, R.style.Theme_BlueCarController)
+        new AlertDialog.Builder(this)
                 .setTitle("选择蓝牙设备")
                 .setItems(deviceNames, (dialog, which) -> {
                     connectDevice(deviceList.get(which));
